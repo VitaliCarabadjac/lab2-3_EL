@@ -1,0 +1,8 @@
+rootProject.name = 'shoe shop'
+
+include 'api-gateway'
+include 'order-service'
+include 'product-service'
+include 'eureka-service'
+include 'auth-service'
+include 'inventory-service'

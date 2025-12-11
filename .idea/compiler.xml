@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.30/f195ee86e6c896ea47a1d39defbe20eb59cd149d/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="shoe_shop.api-gateway.main" />
+      </profile>
+      <profile name="Gradle Imported" enabled="true">
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
+        </processorPath>
+        <module name="shoe_shop.eureka-service.main" />
+        <module name="shoe_shop.inventory-service.main" />
+        <module name="shoe_shop.order-service.main" />
+        <module name="shoe_shop.product-service.main" />
+        <module name="shoe_shop.auth-service.main" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="17" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="shoe_shop.api-gateway" options="-parameters" />
+      <module name="shoe_shop.api-gateway.main" options="-parameters" />
+      <module name="shoe_shop.api-gateway.test" options="-parameters" />
+      <module name="shoe_shop.auth-service" options="-parameters" />
+      <module name="shoe_shop.auth-service.main" options="-parameters" />
+      <module name="shoe_shop.auth-service.test" options="-parameters" />
+      <module name="shoe_shop.eureka-service" options="-parameters" />
+      <module name="shoe_shop.eureka-service.main" options="-parameters" />
+      <module name="shoe_shop.eureka-service.test" options="-parameters" />
+      <module name="shoe_shop.inventory-service" options="-parameters" />
+      <module name="shoe_shop.inventory-service.main" options="-parameters" />
+      <module name="shoe_shop.inventory-service.test" options="-parameters" />
+      <module name="shoe_shop.order-service" options="-parameters" />
+      <module name="shoe_shop.order-service.main" options="-parameters" />
+      <module name="shoe_shop.order-service.test" options="-parameters" />
+      <module name="shoe_shop.product-service" options="-parameters" />
+      <module name="shoe_shop.product-service.main" options="-parameters" />
+      <module name="shoe_shop.product-service.test" options="-parameters" />
+    </option>
+  </component>
+</project>

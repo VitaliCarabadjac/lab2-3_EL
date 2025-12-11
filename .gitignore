@@ -1,0 +1,6 @@
+.gradle
+build
+.vscode
+*.code-workspace
+/node_modules
+notes.md
