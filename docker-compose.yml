@@ -1,14 +1,18 @@
-version: '3.8'
 services:
   eureka-service:
     build:
       context: .
       dockerfile: eureka-service/Dockerfile
     image: jwww684/eureka:latest
-    networks:
-      - ms-network
     ports:
       - "8091:8091"
+    networks:
+      - ms-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8091/eureka/apps"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   order-service:
     build:
@@ -20,7 +24,8 @@ services:
     networks:
       - ms-network
     depends_on:
-      - eureka-service
+      eureka-service:
+        condition: service_healthy
 
   product-service:
     build:
@@ -32,7 +37,8 @@ services:
     networks:
       - ms-network
     depends_on:
-      - eureka-service
+      eureka-service:
+        condition: service_healthy
 
   auth-service:
     build:
@@ -44,7 +50,8 @@ services:
     networks:
       - ms-network
     depends_on:
-      - eureka-service
+      eureka-service:
+        condition: service_healthy
 
   api-gateway:
     build:
@@ -56,10 +63,14 @@ services:
     networks:
       - ms-network
     depends_on:
-      - eureka-service
-      - order-service
-      - product-service
-      - auth-service
+      eureka-service:
+        condition: service_healthy
+      order-service:
+        condition: service_started
+      product-service:
+        condition: service_started
+      auth-service:
+        condition: service_started
 
 networks:
   ms-network:

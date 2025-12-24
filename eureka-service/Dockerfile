@@ -1,29 +1,18 @@
-# Dockerfile in eureka-service directory
-FROM openjdk:17-jdk-slim as build
+# ===============================
+# Build stage
+# ===============================
+FROM eclipse-temurin:17-jdk-jammy AS build
 
 WORKDIR /workspace/app
+COPY . .
+RUN chmod +x mvnw
+RUN ./mvnw clean package -DskipTests
 
-# Copy the Gradle executable and wrapper
-COPY gradle ./gradle
-COPY gradlew ./
-COPY build.gradle ./
-COPY settings.gradle ./
+# ===============================
+# Runtime stage
+# ===============================
+FROM eclipse-temurin:17-jre-jammy
+WORKDIR /app
+COPY --from=build /workspace/app/target/*.jar app.jar
 
-# Copy the eureka-service project
-COPY eureka-service/build.gradle ./eureka-service/
-COPY eureka-service/src ./eureka-service/src
-
-# Grant execution permissions to Gradle wrapper
-RUN chmod +x gradlew
-
-# Build the project
-RUN ./gradlew :eureka-service:build -x test
-
-# Stage 2: Create the Docker image with the built JAR file
-FROM openjdk:17-jdk-slim
-
-COPY --from=build /workspace/app/eureka-service/build/libs/*.jar app.jar
-
-EXPOSE 8091
-
-ENTRYPOINT ["java", "-jar", "/app.jar", "--spring.profiles.active=prod"]
+ENTRYPOINT ["java","-jar","app.jar"]
