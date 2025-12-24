@@ -1,0 +1,40 @@
+services:
+  eureka-service:
+    build: ./stub-service
+    environment:
+      SERVICE_NAME: eureka-service
+      SERVER_PORT: 8091
+    ports:
+      - "8091:8091"
+
+  order-service:
+    build: ./stub-service
+    environment:
+      SERVICE_NAME: order-service
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+
+  product-service:
+    build: ./stub-service
+    environment:
+      SERVICE_NAME: product-service
+      SERVER_PORT: 8082
+    ports:
+      - "8082:8082"
+
+  auth-service:
+    build: ./stub-service
+    environment:
+      SERVICE_NAME: auth-service
+      SERVER_PORT: 8092
+    ports:
+      - "8092:8092"
+
+  api-gateway:
+    build: ./stub-service
+    environment:
+      SERVICE_NAME: api-gateway
+      SERVER_PORT: 8090
+    ports:
+      - "8090:8090"
